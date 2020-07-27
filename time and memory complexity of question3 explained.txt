@@ -1,0 +1,22 @@
+#solution
+lets assume we have n nodes
+At first we are doing some preprocessing on the given graph. we want to make a sparse table which will have the information of 2^x-th level 
+parents, here x is (0 to log(n)). if there is no parent for such level we will save that parent as -1. First we are running a BFS or DFS to
+get the 2^0 or immidiate parent.Then we can use this information to build up to further level parents. At first we have information of all
+0 level parent ,now we can get 1 level parents for all nodes using that 0 level parents information. For example 1 is parent 2 and 2 is parent 
+of 3. In this example, 1 is 0th level parent of 2 and 2 is 0th level parent of 3. Here 3's 1th level parent is 1 because 1 is 2's 0th level parent.
+thats how we can move find 2^1,2^2,2^3....2^(logn) parents of each node in the given tree
+
+This preprocessing cost n*(logn)+n time complexity
+
+and memory complexity n*logn
+
+Now we are interested in query. first we pull the query nodes at the same level of tree. then we start climbing the tree by log(n) jump.
+so the time complexity for each query is logn  
+
+
+Summary:
+
+if we have n nodes and q query
+time complexity = nlogn + q*logn
+memory complexity = n*logn
